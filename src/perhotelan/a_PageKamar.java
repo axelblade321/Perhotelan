@@ -254,6 +254,8 @@ public class a_PageKamar extends javax.swing.JFrame {
         }
     }
     
+    //Bagian Krayawan
+    
     public void tampil_Karyawan(){
         
         Object []baris_Karyawan = {"ID User", "Nama User", "Gender User", "Telp User", "Role User", "Pass User"};
