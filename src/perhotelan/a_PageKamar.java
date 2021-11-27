@@ -23,6 +23,7 @@ public class a_PageKamar extends javax.swing.JFrame {
         
         tampil_Kamar();
         tampil_Karyawan();
+        tampil_History();
     }
 
     /**
@@ -34,7 +35,7 @@ public class a_PageKamar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tbl_History = new javax.swing.JTabbedPane();
         panel_Kamar = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btn_TambahKamar = new javax.swing.JButton();
@@ -50,11 +51,18 @@ public class a_PageKamar extends javax.swing.JFrame {
         btn_TambahKaryawan = new javax.swing.JButton();
         btn_EditKaryawan = new javax.swing.JButton();
         btn_HapusKaryawan = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        panel_Riwayat = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbl_Riwayat = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btn_TambahKamar.setText("Tambah");
+        btn_TambahKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TambahKamarActionPerformed(evt);
+            }
+        });
 
         btn_EditKamar.setText("Edit");
 
@@ -85,7 +93,7 @@ public class a_PageKamar extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_TambahKamar)
@@ -124,7 +132,7 @@ public class a_PageKamar extends javax.swing.JFrame {
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Kamar", panel_Kamar);
+        tbl_History.addTab("Kamar", panel_Kamar);
 
         tbl_Karyawan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,7 +165,7 @@ public class a_PageKamar extends javax.swing.JFrame {
         panel_PegawaiLayout.setHorizontalGroup(
             panel_PegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_PegawaiLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_PegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_TambahKaryawan)
@@ -183,20 +191,38 @@ public class a_PageKamar extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
-        jTabbedPane1.addTab("Pegawai", panel_Pegawai);
+        tbl_History.addTab("Pegawai", panel_Pegawai);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 868, Short.MAX_VALUE)
+        tbl_Riwayat.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tbl_Riwayat);
+
+        javax.swing.GroupLayout panel_RiwayatLayout = new javax.swing.GroupLayout(panel_Riwayat);
+        panel_Riwayat.setLayout(panel_RiwayatLayout);
+        panel_RiwayatLayout.setHorizontalGroup(
+            panel_RiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_RiwayatLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 136, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
+        panel_RiwayatLayout.setVerticalGroup(
+            panel_RiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_RiwayatLayout.createSequentialGroup()
+                .addContainerGap(61, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
-        jTabbedPane1.addTab("Riwayat Peminjam", jPanel1);
+        tbl_History.addTab("Riwayat Peminjam", panel_Riwayat);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,18 +230,18 @@ public class a_PageKamar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tbl_History)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(85, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tbl_History, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
-        jTabbedPane1.getAccessibleContext().setAccessibleName("Kamar");
+        tbl_History.getAccessibleContext().setAccessibleName("Kamar");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,6 +253,12 @@ public class a_PageKamar extends javax.swing.JFrame {
     private void btn_RefreshKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RefreshKaryawanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_RefreshKaryawanActionPerformed
+
+    private void btn_TambahKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TambahKamarActionPerformed
+        // TODO add your handling code here:
+        a_Tambah_Kamar popTambahKamar = new a_Tambah_Kamar();
+        popTambahKamar.show();
+    }//GEN-LAST:event_btn_TambahKamarActionPerformed
 
     private DefaultTableModel tabmode;
     
@@ -282,6 +314,35 @@ public class a_PageKamar extends javax.swing.JFrame {
         }
     }
     
+    public void tampil_History(){
+        
+        Object []baris_History = {"ID Tamu", "Nama Tamu", "Gender Tamu", "Kode Kamar", "No Kamar", "Tipe Kamar", "Check IN", "Check OUT", "Lama Peinjaman", "Total Harga"};
+        tabmode = new DefaultTableModel(null, baris_History);
+        tbl_Riwayat.setModel(tabmode);
+        try {
+            String sql = "SELECT * FROM tbl_history order by tamu_Id asc";
+            Statement stat_History = con.createStatement();
+            ResultSet historyView = stat_History.executeQuery(sql);
+            while (historyView.next()) {
+                String tamu_Id = historyView.getString("tamu_Id");
+                String nama_Tamu = historyView.getString("nama_Tamu");
+                String gender_Tamu = historyView.getString("gender_Tamu");
+                String kode_Kamar = historyView.getString("kode_Kamar");
+                String no_Kamar = historyView.getString("no_Kamar");
+                String tipe_Kamar = historyView.getString("tipe_Kamar");
+                String checkIn_Tamu = historyView.getString("checkIn_Tamu");
+                String checkOut_Tamu = historyView.getString("checkOut_Tamu");
+                String lama_Peminjaman = historyView.getString("lama_Peminjaman");
+                String total_Harga = historyView.getString("total_Harga");
+                
+                String[] dataHistory = {tamu_Id, nama_Tamu, gender_Tamu, kode_Kamar, no_Kamar, tipe_Kamar, checkIn_Tamu, checkOut_Tamu, lama_Peminjaman, total_Harga};
+                tabmode.addRow(dataHistory);
+                
+            }
+        } catch (Exception e) {
+        }
+    }
+    
     
 
     /**
@@ -328,14 +389,16 @@ public class a_PageKamar extends javax.swing.JFrame {
     private javax.swing.JButton btn_RefreshKaryawan;
     private javax.swing.JButton btn_TambahKamar;
     private javax.swing.JButton btn_TambahKaryawan;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel panel_Kamar;
     private javax.swing.JPanel panel_Pegawai;
+    private javax.swing.JPanel panel_Riwayat;
+    private javax.swing.JTabbedPane tbl_History;
     private javax.swing.JTable tbl_Kamar;
     private javax.swing.JTable tbl_Karyawan;
+    private javax.swing.JTable tbl_Riwayat;
     // End of variables declaration//GEN-END:variables
 }
