@@ -4,7 +4,11 @@
  */
 package perhotelan;
 
+import static com.sun.webkit.perf.WCFontPerfLogger.reset;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+import sun.misc.JavaAWTAccess;
 
 /**
  *
@@ -13,6 +17,7 @@ import java.sql.Connection;
 public class a_Tambah_Kamar extends javax.swing.JFrame {
     
     Connection con = new dbConnect().databaseConnect();
+    String tipeKamar_Selection;
 
     /**
      * Creates new form a_TambahKamar
@@ -151,6 +156,11 @@ public class a_Tambah_Kamar extends javax.swing.JFrame {
         btn_Exit.setBackground(new java.awt.Color(255, 51, 51));
         btn_Exit.setForeground(new java.awt.Color(255, 255, 255));
         btn_Exit.setText("Keluar");
+        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
@@ -194,12 +204,28 @@ public class a_Tambah_Kamar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btn_TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TambahActionPerformed
         // TODO add your handling code here:
-        String selectTipeKamar = cmb_TipeKamar.getSelectedItem().toString();
-        String selectLantaiKamar = cmb_LantaiKamar.getSelectedItem().toString();
+        try {
+
+            String submitQuery = "INSERT INTO tbl_kamar VALUES (NULL, '"+tf_NoKamar.getText()+"', '"+(String)cmb_TipeKamar.getSelectedItem()+"',"
+                + " '"+(String)cmb_LantaiKamar.getSelectedItem()+"', '"+tf_HargaSewa.getText()+"')";
+            
+            PreparedStatement pst = con.prepareStatement(submitQuery);
+            pst.execute();
+
+            JOptionPane.showMessageDialog(null,"Menyimpan data BERHASIL","Informasi", JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Menyimpan data GAGAL","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btn_TambahActionPerformed
+
+    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_ExitActionPerformed
 
     /**
      * @param args the command line arguments

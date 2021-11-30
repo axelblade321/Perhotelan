@@ -65,8 +65,18 @@ public class a_PageKamar extends javax.swing.JFrame {
         });
 
         btn_EditKamar.setText("Edit");
+        btn_EditKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EditKamarActionPerformed(evt);
+            }
+        });
 
         btn_HapusKamar.setText("Hapus");
+        btn_HapusKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_HapusKamarActionPerformed(evt);
+            }
+        });
 
         btn_RefreshKamar.setText("Refresh");
         btn_RefreshKamar.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +262,7 @@ public class a_PageKamar extends javax.swing.JFrame {
 
     private void btn_RefreshKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RefreshKaryawanActionPerformed
         // TODO add your handling code here:
+        tampil_Karyawan();
     }//GEN-LAST:event_btn_RefreshKaryawanActionPerformed
 
     private void btn_TambahKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TambahKamarActionPerformed
@@ -259,6 +270,18 @@ public class a_PageKamar extends javax.swing.JFrame {
         a_Tambah_Kamar popTambahKamar = new a_Tambah_Kamar();
         popTambahKamar.show();
     }//GEN-LAST:event_btn_TambahKamarActionPerformed
+
+    private void btn_EditKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditKamarActionPerformed
+        // TODO add your handling code here:
+        a_Edit_Kamar popEditKamar = new a_Edit_Kamar();
+        popEditKamar.show();
+    }//GEN-LAST:event_btn_EditKamarActionPerformed
+
+    private void btn_HapusKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HapusKamarActionPerformed
+        // TODO add your handling code here:
+        a_Delete_Kamar popDeleteKamar = new a_Delete_Kamar();
+        popDeleteKamar.show();
+    }//GEN-LAST:event_btn_HapusKamarActionPerformed
 
     private DefaultTableModel tabmode;
     
