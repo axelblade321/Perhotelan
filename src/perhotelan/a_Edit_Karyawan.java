@@ -4,6 +4,11 @@
  */
 package perhotelan;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author acer
@@ -13,9 +18,27 @@ public class a_Edit_Karyawan extends javax.swing.JFrame {
     /**
      * Creates new form a_Edit_Karyawan
      */
+    
+    Connection con = new dbConnect().databaseConnect();
+    
     public a_Edit_Karyawan() {
         initComponents();
+        search_idPegawai();
     }
+    public void search_idPegawai(){
+        String sql_SearchIdPegawai = "SELECT * FROM tbl_user";
+        try {
+            PreparedStatement pstId_Pegawai = con.prepareStatement(sql_SearchIdPegawai);
+            ResultSet rsIdView = pstId_Pegawai.executeQuery(sql_SearchIdPegawai);
+            while (rsIdView.next()) {
+                sc_Id_Pegawai.addItem(rsIdView.getString("user_Id"));
+                
+            }
+        }catch(Exception e){
+        
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +52,7 @@ public class a_Edit_Karyawan extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        sc_Id_Pegawai = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -41,6 +64,22 @@ public class a_Edit_Karyawan extends javax.swing.JFrame {
         vw_Edt_RoleUser = new javax.swing.JTextField();
         vw_Edt_PassUser = new javax.swing.JTextField();
         btn_Edt_SearchId = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        upd_Edt_Nama = new javax.swing.JTextField();
+        upd_Edt_Tlp = new javax.swing.JTextField();
+        upd_Edt_Pass = new javax.swing.JTextField();
+        upd_Edt_Gender = new javax.swing.JComboBox<>();
+        upd_Edt_Role = new javax.swing.JComboBox<>();
+        btn_Upd_Nama = new javax.swing.JButton();
+        btn_Upd_Gender = new javax.swing.JButton();
+        btn_Upd_Telp = new javax.swing.JButton();
+        btn_Upd_Role = new javax.swing.JButton();
+        btn_Upd_Pass = new javax.swing.JButton();
+        btn_Exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,8 +93,7 @@ public class a_Edit_Karyawan extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Id Karyawan");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        sc_Id_Pegawai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,44 +125,155 @@ public class a_Edit_Karyawan extends javax.swing.JFrame {
 
         vw_Edt_PassUser.setEditable(false);
 
+        btn_Edt_SearchId.setBackground(new java.awt.Color(51, 255, 51));
+        btn_Edt_SearchId.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btn_Edt_SearchId.setText("Cari");
+        btn_Edt_SearchId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Edt_SearchIdActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("=>");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("=>");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("=>");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("=>");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("=>");
+
+        upd_Edt_Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lk", "Pr" }));
+
+        upd_Edt_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Karyawan" }));
+
+        btn_Upd_Nama.setText("Update");
+        btn_Upd_Nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Upd_NamaActionPerformed(evt);
+            }
+        });
+
+        btn_Upd_Gender.setText("Update");
+        btn_Upd_Gender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Upd_GenderActionPerformed(evt);
+            }
+        });
+
+        btn_Upd_Telp.setText("Update");
+        btn_Upd_Telp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Upd_TelpActionPerformed(evt);
+            }
+        });
+
+        btn_Upd_Role.setText("Update");
+        btn_Upd_Role.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Upd_RoleActionPerformed(evt);
+            }
+        });
+
+        btn_Upd_Pass.setText("Update");
+        btn_Upd_Pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Upd_PassActionPerformed(evt);
+            }
+        });
+
+        btn_Exit.setBackground(new java.awt.Color(255, 51, 51));
+        btn_Exit.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btn_Exit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Exit.setText("Keluar");
+        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(22, 22, 22)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(vw_Edt_RoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(vw_Edt_TelpUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(vw_Edt_PassUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(111, 111, 111)
-                                .addComponent(vw_Edt_GenderUser, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(36, 36, 36)
-                            .addComponent(vw_Edt_NamaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Edt_SearchId)))
-                .addGap(388, 388, 388))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(sc_Id_Pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Edt_SearchId))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel4)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel5)
+                                                .addComponent(jLabel6))
+                                            .addGap(22, 22, 22)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(vw_Edt_RoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(vw_Edt_TelpUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(vw_Edt_PassUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(111, 111, 111)
+                                            .addComponent(vw_Edt_GenderUser, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(vw_Edt_NamaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(upd_Edt_Gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(upd_Edt_Tlp, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(upd_Edt_Role, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(upd_Edt_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(upd_Edt_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_Upd_Nama)
+                                    .addComponent(btn_Upd_Gender)
+                                    .addComponent(btn_Upd_Telp)
+                                    .addComponent(btn_Upd_Role)
+                                    .addComponent(btn_Upd_Pass)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(btn_Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,28 +285,46 @@ public class a_Edit_Karyawan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_Edt_SearchId, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(sc_Id_Pegawai))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(vw_Edt_NamaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vw_Edt_NamaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(upd_Edt_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Upd_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(vw_Edt_GenderUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(upd_Edt_Gender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(vw_Edt_GenderUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(btn_Upd_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(vw_Edt_TelpUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vw_Edt_TelpUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(upd_Edt_Tlp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Upd_Telp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(vw_Edt_RoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vw_Edt_RoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(upd_Edt_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Upd_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(vw_Edt_PassUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(vw_Edt_PassUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(upd_Edt_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Upd_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,11 +335,101 @@ public class a_Edit_Karyawan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_Edt_SearchIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Edt_SearchIdActionPerformed
+        // TODO add your handling code here:
+        String viewData_IdPegawai = "SELECT * FROM tbl_user WHERE user_Id='"+ sc_Id_Pegawai.getSelectedItem() +"'";
+        try {
+            PreparedStatement pst_View_IdSearch = con.prepareStatement(viewData_IdPegawai);
+            ResultSet rs_View_IdSearch = pst_View_IdSearch.executeQuery();
+            if (rs_View_IdSearch.next()) {
+                vw_Edt_NamaUser.setText(rs_View_IdSearch.getString("user_Nama"));
+                vw_Edt_GenderUser.setText(rs_View_IdSearch.getString("user_Gender"));
+                vw_Edt_TelpUser.setText(rs_View_IdSearch.getString("user_Tlp"));
+                vw_Edt_RoleUser.setText(rs_View_IdSearch.getString("user_Role"));
+                vw_Edt_PassUser.setText(rs_View_IdSearch.getString("user_Password"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e,"Gagal Mendapat Informasi", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_Edt_SearchIdActionPerformed
+
+    private void btn_Upd_NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Upd_NamaActionPerformed
+        // TODO add your handling code here:
+        String update_NamaUser = "UPDATE tbl_user SET user_Nama='"+ upd_Edt_Nama.getText() +"' WHERE user_Id='"+ (String)sc_Id_Pegawai.getSelectedItem() +"'";
+        try {
+            PreparedStatement pst_UpdateNama = con.prepareStatement(update_NamaUser);
+            pst_UpdateNama.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Update data Nama Pegawai Berhasil","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Update data Nama Pegawai Gagal","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_Upd_NamaActionPerformed
+
+    private void btn_Upd_GenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Upd_GenderActionPerformed
+        // TODO add your handling code here:
+        String update_GenderUser = "UPDATE tbl_user SET user_Gender='"+ (String)upd_Edt_Gender.getSelectedItem() +"' WHERE user_Id='"+ (String)sc_Id_Pegawai.getSelectedItem() +"'";
+        try {
+            PreparedStatement pst_UpdateGender = con.prepareStatement(update_GenderUser);
+            pst_UpdateGender.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Update data Gender Pegawai Berhasil","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Update data Gender Pegawai Gagal","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_Upd_GenderActionPerformed
+
+    private void btn_Upd_TelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Upd_TelpActionPerformed
+        // TODO add your handling code here:
+        String update_TlpUser = "UPDATE tbl_user SET user_Tlp='"+ upd_Edt_Tlp.getText() +"' WHERE user_Id='"+ (String)sc_Id_Pegawai.getSelectedItem() +"'";
+        try {
+            PreparedStatement pst_UpdateTlp = con.prepareStatement(update_TlpUser);
+            pst_UpdateTlp.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Update data No Telp Pegawai Berhasil","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Update data No Telp Pegawai Gagal","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_Upd_TelpActionPerformed
+
+    private void btn_Upd_RoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Upd_RoleActionPerformed
+        // TODO add your handling code here:
+        String update_RoleUser = "UPDATE tbl_user SET user_Role='"+ (String)upd_Edt_Role.getSelectedItem() +"' WHERE user_Id='"+ (String)sc_Id_Pegawai.getSelectedItem() +"'";
+        try {
+            PreparedStatement pst_UpdateRole = con.prepareStatement(update_RoleUser);
+            pst_UpdateRole.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Update data Role Pegawai Berhasil","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Update data Role Pegawai Gagal","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_Upd_RoleActionPerformed
+
+    private void btn_Upd_PassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Upd_PassActionPerformed
+        // TODO add your handling code here:
+        String update_PassUser = "UPDATE tbl_user SET user_Password='"+ upd_Edt_Pass.getText() +"' WHERE user_Id='"+ (String)sc_Id_Pegawai.getSelectedItem() +"'";
+        try {
+            PreparedStatement pst_UpdatePass = con.prepareStatement(update_PassUser);
+            pst_UpdatePass.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Update data Password Pegawai Berhasil","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Update data Password Pegawai Gagal","Informasi", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_Upd_PassActionPerformed
+
+    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btn_ExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,15 +468,31 @@ public class a_Edit_Karyawan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Edt_SearchId;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btn_Exit;
+    private javax.swing.JButton btn_Upd_Gender;
+    private javax.swing.JButton btn_Upd_Nama;
+    private javax.swing.JButton btn_Upd_Pass;
+    private javax.swing.JButton btn_Upd_Role;
+    private javax.swing.JButton btn_Upd_Telp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> sc_Id_Pegawai;
+    private javax.swing.JComboBox<String> upd_Edt_Gender;
+    private javax.swing.JTextField upd_Edt_Nama;
+    private javax.swing.JTextField upd_Edt_Pass;
+    private javax.swing.JComboBox<String> upd_Edt_Role;
+    private javax.swing.JTextField upd_Edt_Tlp;
     private javax.swing.JTextField vw_Edt_GenderUser;
     private javax.swing.JTextField vw_Edt_NamaUser;
     private javax.swing.JTextField vw_Edt_PassUser;

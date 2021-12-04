@@ -54,6 +54,7 @@ public class a_PageKamar extends javax.swing.JFrame {
         panel_Riwayat = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_Riwayat = new javax.swing.JTable();
+        btn_refresh_History = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,10 +166,25 @@ public class a_PageKamar extends javax.swing.JFrame {
         });
 
         btn_TambahKaryawan.setText("Tambah");
+        btn_TambahKaryawan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TambahKaryawanActionPerformed(evt);
+            }
+        });
 
         btn_EditKaryawan.setText("Edit");
+        btn_EditKaryawan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EditKaryawanActionPerformed(evt);
+            }
+        });
 
         btn_HapusKaryawan.setText("Hapus");
+        btn_HapusKaryawan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_HapusKaryawanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_PegawaiLayout = new javax.swing.GroupLayout(panel_Pegawai);
         panel_Pegawai.setLayout(panel_PegawaiLayout);
@@ -216,23 +232,28 @@ public class a_PageKamar extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tbl_Riwayat);
 
+        btn_refresh_History.setText("Refresh");
+
         javax.swing.GroupLayout panel_RiwayatLayout = new javax.swing.GroupLayout(panel_Riwayat);
         panel_Riwayat.setLayout(panel_RiwayatLayout);
         panel_RiwayatLayout.setHorizontalGroup(
             panel_RiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3)
             .addGroup(panel_RiwayatLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 136, Short.MAX_VALUE))
+                .addGap(390, 390, 390)
+                .addComponent(btn_refresh_History, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(434, Short.MAX_VALUE))
         );
         panel_RiwayatLayout.setVerticalGroup(
             panel_RiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_RiwayatLayout.createSequentialGroup()
                 .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_refresh_History, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        tbl_History.addTab("Riwayat Peminjam", panel_Riwayat);
+        tbl_History.addTab("Riwayat Penguna Aplikasi", panel_Riwayat);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -282,6 +303,24 @@ public class a_PageKamar extends javax.swing.JFrame {
         a_Delete_Kamar popDeleteKamar = new a_Delete_Kamar();
         popDeleteKamar.show();
     }//GEN-LAST:event_btn_HapusKamarActionPerformed
+
+    private void btn_EditKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditKaryawanActionPerformed
+        // TODO add your handling code here:
+        a_Edit_Karyawan popEdit_Karyawan = new a_Edit_Karyawan();
+        popEdit_Karyawan.show();
+    }//GEN-LAST:event_btn_EditKaryawanActionPerformed
+
+    private void btn_TambahKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TambahKaryawanActionPerformed
+        // TODO add your handling code here:
+        a_Tambah_Karyawan popTambah_Karyawan = new a_Tambah_Karyawan();
+        popTambah_Karyawan.show();
+    }//GEN-LAST:event_btn_TambahKaryawanActionPerformed
+
+    private void btn_HapusKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HapusKaryawanActionPerformed
+        // TODO add your handling code here:
+        a_Delete_Karyawan popDelete_Karyawan = new a_Delete_Karyawan();
+        popDelete_Karyawan.show();
+    }//GEN-LAST:event_btn_HapusKaryawanActionPerformed
 
     private DefaultTableModel tabmode;
     
@@ -412,6 +451,7 @@ public class a_PageKamar extends javax.swing.JFrame {
     private javax.swing.JButton btn_RefreshKaryawan;
     private javax.swing.JButton btn_TambahKamar;
     private javax.swing.JButton btn_TambahKaryawan;
+    private javax.swing.JButton btn_refresh_History;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
