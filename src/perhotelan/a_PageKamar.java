@@ -23,7 +23,7 @@ public class a_PageKamar extends javax.swing.JFrame {
         
         tampil_Kamar();
         tampil_Karyawan();
-        tampil_History();
+        tampil_HistoryLog();
     }
 
     /**
@@ -35,6 +35,7 @@ public class a_PageKamar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         tbl_History = new javax.swing.JTabbedPane();
         panel_Kamar = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -44,6 +45,7 @@ public class a_PageKamar extends javax.swing.JFrame {
         btn_RefreshKamar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_Kamar = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
         panel_Pegawai = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Karyawan = new javax.swing.JTable();
@@ -51,12 +53,22 @@ public class a_PageKamar extends javax.swing.JFrame {
         btn_TambahKaryawan = new javax.swing.JButton();
         btn_EditKaryawan = new javax.swing.JButton();
         btn_HapusKaryawan = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         panel_Riwayat = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tbl_Riwayat = new javax.swing.JTable();
+        tbl_HistoryAccess = new javax.swing.JTable();
         btn_refresh_History = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 255));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 255));
+
+        tbl_History.setBackground(new java.awt.Color(102, 102, 255));
+
+        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
 
         btn_TambahKamar.setText("Tambah");
         btn_TambahKamar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,13 +111,20 @@ public class a_PageKamar extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tbl_Kamar);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Halaman Data Kamar");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_TambahKamar)
                     .addComponent(btn_RefreshKamar)
@@ -116,9 +135,11 @@ public class a_PageKamar extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_RefreshKamar)
                         .addGap(18, 18, 18)
@@ -127,7 +148,7 @@ public class a_PageKamar extends javax.swing.JFrame {
                         .addComponent(btn_EditKamar)
                         .addGap(18, 18, 18)
                         .addComponent(btn_HapusKamar)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panel_KamarLayout = new javax.swing.GroupLayout(panel_Kamar);
@@ -140,10 +161,12 @@ public class a_PageKamar extends javax.swing.JFrame {
             panel_KamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_KamarLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         tbl_History.addTab("Kamar", panel_Kamar);
+
+        panel_Pegawai.setBackground(new java.awt.Color(102, 102, 255));
 
         tbl_Karyawan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -186,24 +209,36 @@ public class a_PageKamar extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Halaman Data Pegawai");
+
         javax.swing.GroupLayout panel_PegawaiLayout = new javax.swing.GroupLayout(panel_Pegawai);
         panel_Pegawai.setLayout(panel_PegawaiLayout);
         panel_PegawaiLayout.setHorizontalGroup(
             panel_PegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_PegawaiLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PegawaiLayout.createSequentialGroup()
+                .addGroup(panel_PegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_PegawaiLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_PegawaiLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_PegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_TambahKaryawan)
                     .addComponent(btn_RefreshKaryawan)
                     .addComponent(btn_EditKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_HapusKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_HapusKaryawan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panel_PegawaiLayout.setVerticalGroup(
             panel_PegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PegawaiLayout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_PegawaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_PegawaiLayout.createSequentialGroup()
                         .addComponent(btn_RefreshKaryawan)
@@ -213,13 +248,15 @@ public class a_PageKamar extends javax.swing.JFrame {
                         .addComponent(btn_EditKaryawan)
                         .addGap(18, 18, 18)
                         .addComponent(btn_HapusKaryawan))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         tbl_History.addTab("Pegawai", panel_Pegawai);
 
-        tbl_Riwayat.setModel(new javax.swing.table.DefaultTableModel(
+        panel_Riwayat.setBackground(new java.awt.Color(102, 102, 255));
+
+        tbl_HistoryAccess.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -230,9 +267,18 @@ public class a_PageKamar extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(tbl_Riwayat);
+        jScrollPane3.setViewportView(tbl_HistoryAccess);
 
         btn_refresh_History.setText("Refresh");
+        btn_refresh_History.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_refresh_HistoryActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Halaman Data Riwayat Pengguna Applikasi");
 
         javax.swing.GroupLayout panel_RiwayatLayout = new javax.swing.GroupLayout(panel_Riwayat);
         panel_Riwayat.setLayout(panel_RiwayatLayout);
@@ -240,69 +286,75 @@ public class a_PageKamar extends javax.swing.JFrame {
             panel_RiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3)
             .addGroup(panel_RiwayatLayout.createSequentialGroup()
-                .addGap(390, 390, 390)
-                .addComponent(btn_refresh_History, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addGroup(panel_RiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_RiwayatLayout.createSequentialGroup()
+                        .addGap(390, 390, 390)
+                        .addComponent(btn_refresh_History, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_RiwayatLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         panel_RiwayatLayout.setVerticalGroup(
             panel_RiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_RiwayatLayout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_refresh_History, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tbl_History.addTab("Riwayat Penguna Aplikasi", panel_Riwayat);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 33)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Applikasi Perhotel Bagian Admin");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tbl_History)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tbl_History)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addComponent(tbl_History, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGap(29, 29, 29)
+                .addComponent(tbl_History, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbl_History.getAccessibleContext().setAccessibleName("Kamar");
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_RefreshKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RefreshKamarActionPerformed
-        tampil_Kamar();
-    }//GEN-LAST:event_btn_RefreshKamarActionPerformed
 
     private void btn_RefreshKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RefreshKaryawanActionPerformed
         // TODO add your handling code here:
         tampil_Karyawan();
     }//GEN-LAST:event_btn_RefreshKaryawanActionPerformed
-
-    private void btn_TambahKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TambahKamarActionPerformed
-        // TODO add your handling code here:
-        a_Tambah_Kamar popTambahKamar = new a_Tambah_Kamar();
-        popTambahKamar.show();
-    }//GEN-LAST:event_btn_TambahKamarActionPerformed
-
-    private void btn_EditKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditKamarActionPerformed
-        // TODO add your handling code here:
-        a_Edit_Kamar popEditKamar = new a_Edit_Kamar();
-        popEditKamar.show();
-    }//GEN-LAST:event_btn_EditKamarActionPerformed
-
-    private void btn_HapusKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HapusKamarActionPerformed
-        // TODO add your handling code here:
-        a_Delete_Kamar popDeleteKamar = new a_Delete_Kamar();
-        popDeleteKamar.show();
-    }//GEN-LAST:event_btn_HapusKamarActionPerformed
 
     private void btn_EditKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditKaryawanActionPerformed
         // TODO add your handling code here:
@@ -321,6 +373,33 @@ public class a_PageKamar extends javax.swing.JFrame {
         a_Delete_Karyawan popDelete_Karyawan = new a_Delete_Karyawan();
         popDelete_Karyawan.show();
     }//GEN-LAST:event_btn_HapusKaryawanActionPerformed
+
+    private void btn_refresh_HistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refresh_HistoryActionPerformed
+        // TODO add your handling code here:
+        tampil_HistoryLog();
+    }//GEN-LAST:event_btn_refresh_HistoryActionPerformed
+
+    private void btn_RefreshKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RefreshKamarActionPerformed
+        tampil_Kamar();
+    }//GEN-LAST:event_btn_RefreshKamarActionPerformed
+
+    private void btn_HapusKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HapusKamarActionPerformed
+        // TODO add your handling code here:
+        a_Delete_Kamar popDeleteKamar = new a_Delete_Kamar();
+        popDeleteKamar.show();
+    }//GEN-LAST:event_btn_HapusKamarActionPerformed
+
+    private void btn_EditKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditKamarActionPerformed
+        // TODO add your handling code here:
+        a_Edit_Kamar popEditKamar = new a_Edit_Kamar();
+        popEditKamar.show();
+    }//GEN-LAST:event_btn_EditKamarActionPerformed
+
+    private void btn_TambahKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TambahKamarActionPerformed
+        // TODO add your handling code here:
+        a_Tambah_Kamar popTambahKamar = new a_Tambah_Kamar();
+        popTambahKamar.show();
+    }//GEN-LAST:event_btn_TambahKamarActionPerformed
 
     private DefaultTableModel tabmode;
     
@@ -376,32 +455,25 @@ public class a_PageKamar extends javax.swing.JFrame {
         }
     }
     
-    public void tampil_History(){
-        
-        Object []baris_History = {"ID Tamu", "Nama Tamu", "Gender Tamu", "Kode Kamar", "No Kamar", "Tipe Kamar", "Check IN", "Check OUT", "Lama Peinjaman", "Total Harga"};
-        tabmode = new DefaultTableModel(null, baris_History);
-        tbl_Riwayat.setModel(tabmode);
+    public void tampil_HistoryLog(){
+        Object []baris_LogActivity = {"No Log", "Tanggal Access", "Nama Access", "Keterangan Access"};
+        tabmode = new DefaultTableModel(null, baris_LogActivity);
+        tbl_HistoryAccess.setModel(tabmode);
+        String sql = "SELECT * FROM tbl_logactivity order by log_NoAccess";
         try {
-            String sql = "SELECT * FROM tbl_history order by tamu_Id asc";
-            Statement stat_History = con.createStatement();
-            ResultSet historyView = stat_History.executeQuery(sql);
-            while (historyView.next()) {
-                String tamu_Id = historyView.getString("tamu_Id");
-                String nama_Tamu = historyView.getString("nama_Tamu");
-                String gender_Tamu = historyView.getString("gender_Tamu");
-                String kode_Kamar = historyView.getString("kode_Kamar");
-                String no_Kamar = historyView.getString("no_Kamar");
-                String tipe_Kamar = historyView.getString("tipe_Kamar");
-                String checkIn_Tamu = historyView.getString("checkIn_Tamu");
-                String checkOut_Tamu = historyView.getString("checkOut_Tamu");
-                String lama_Peminjaman = historyView.getString("lama_Peminjaman");
-                String total_Harga = historyView.getString("total_Harga");
+            Statement stat_HistoryLog = con.createStatement();
+            ResultSet rs_view_HistoryLog = stat_HistoryLog.executeQuery(sql);
+            while (rs_view_HistoryLog.next()) {
+                String log_NoAccess = rs_view_HistoryLog.getString("log_NoAccess");
+                String log_TglAccess = rs_view_HistoryLog.getString("log_TglAccess");
+                String log_UserName = rs_view_HistoryLog.getString("log_UserName");
+                String log_KeteranganAcess = rs_view_HistoryLog.getString("log_KeteranganAccess");
                 
-                String[] dataHistory = {tamu_Id, nama_Tamu, gender_Tamu, kode_Kamar, no_Kamar, tipe_Kamar, checkIn_Tamu, checkOut_Tamu, lama_Peminjaman, total_Harga};
-                tabmode.addRow(dataHistory);
-                
+                String[] dataLogHistory = {log_NoAccess, log_TglAccess,log_UserName, log_KeteranganAcess};
+                tabmode.addRow(dataLogHistory);
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Menampilkan data GAGAL","Informasi", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -452,7 +524,14 @@ public class a_PageKamar extends javax.swing.JFrame {
     private javax.swing.JButton btn_TambahKamar;
     private javax.swing.JButton btn_TambahKaryawan;
     private javax.swing.JButton btn_refresh_History;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -460,8 +539,8 @@ public class a_PageKamar extends javax.swing.JFrame {
     private javax.swing.JPanel panel_Pegawai;
     private javax.swing.JPanel panel_Riwayat;
     private javax.swing.JTabbedPane tbl_History;
+    private javax.swing.JTable tbl_HistoryAccess;
     private javax.swing.JTable tbl_Kamar;
     private javax.swing.JTable tbl_Karyawan;
-    private javax.swing.JTable tbl_Riwayat;
     // End of variables declaration//GEN-END:variables
 }

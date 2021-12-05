@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,6 +23,9 @@ public class pageLogin extends javax.swing.JFrame {
     /**
      * Creates new form pageLogin
      */
+    
+    Connection con = new dbConnect().databaseConnect();
+    
     public static String id_user;
     
     public pageLogin() throws SQLException{
@@ -111,7 +115,6 @@ public class pageLogin extends javax.swing.JFrame {
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
         try {
-            Connection con = dbConnect.databaseConnect();
             Statement s = con.createStatement();
             String sql = "SELECT * FROM tbl_user WHERE user_Nama='" + 
                     inp_Username.getText() + "' AND user_Password='" + 
@@ -130,8 +133,21 @@ public class pageLogin extends javax.swing.JFrame {
                     }
                     
                     else if (rs.getString("user_Role").equals("Karyawan")) {
-                        System.out.println("Tidak ada user");
+                        k_Perhotelan next_K_Perhotelan = new k_Perhotelan();
+                        next_K_Perhotelan.show();
+                        this.hide();
                     }
+                    
+                    String log_NamaUser = rs.getString("user_Nama");
+                    String log_RoleUser = rs.getString("user_Role");
+                    
+                    //JOptionPane.showMessageDialog(this, log_RoleUser);
+                    
+                    String log_LogingActivity = "INSERT INTO tbl_logactivity VALUES (NULL, NULL, '"+ log_NamaUser +"', '"+ log_RoleUser +"', "
+                            + "' User "+ log_NamaUser +" Telah Login' )";
+                    
+                    PreparedStatement stat_Logging = con.prepareStatement(log_LogingActivity);
+                    stat_Logging.execute();
                 }
             }
             
